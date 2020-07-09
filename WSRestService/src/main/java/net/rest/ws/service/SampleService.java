@@ -3,6 +3,7 @@ package net.rest.ws.service;
 import net.rest.ws.service.entities.Album;
 import java.util.*;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 @Path("/sampleservice")
 public class SampleService {
@@ -29,28 +30,30 @@ public class SampleService {
 
     @GET
     @Path("/albums")
-    @Produces("application/xml")
+    @Produces({ MediaType.APPLICATION_XML })
     public List<Album> listAlbums() {
         return new ArrayList<Album>(albums.values());
     }
 
     @GET
     @Path("/album/{albumId}")
-    @Produces("application/xml")
+    @Produces({ MediaType.APPLICATION_XML })
     public Album getAlbum(@PathParam("albumId") String albumId) {
         return albums.containsKey(albumId)? albums.get(albumId) : null;
     }
 
     @GET
-    @Path("/albums")
-    @Produces("application/json")
+    @Path("/albums/json")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
     public List<Album> listAlbumsJSON() {
         return listAlbums();
     }
 
     @GET
-    @Path("/album/{albumId}")
-    @Produces("application/json")
+    @Path("/album/{albumId}/json")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
     public Album getAlbumJSON(@PathParam("albumId") String albumId) {
         return getAlbum(albumId);
     }

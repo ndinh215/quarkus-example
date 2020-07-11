@@ -43,7 +43,7 @@ public class SampleService {
     }
 
     @GET
-    @Path("json/albums")
+    @Path("/json/albums")
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
     public List<Album> listAlbumsJSON() {
@@ -51,7 +51,7 @@ public class SampleService {
     }
 
     @GET
-    @Path("json/album/{albumId}")
+    @Path("/json/album/{albumId}")
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
     public Album getAlbumJSON(@PathParam("albumId") String albumId) {

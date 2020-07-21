@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name="USER")
 public class User implements java.io.Serializable {
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
 
@@ -17,11 +17,11 @@ public class User implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

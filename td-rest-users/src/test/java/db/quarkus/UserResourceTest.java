@@ -10,12 +10,26 @@ import static org.hamcrest.CoreMatchers.is;
 public class UserResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testPeopleEndpoint() {
         given()
-          .when().get("/api/users")
+          .when().get("/api/users/people")
           .then()
-             .statusCode(200)
-             .body(is("hello"));
+             .statusCode(200);
     }
 
+    @Test
+    public void testFindByNameEndpoint() {
+        given()
+                .when().get("/api/users/people/by-name/name2")
+                .then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void testFindPersonByIdEndpoint() {
+        given()
+                .when().get("/api/users/person/1")
+                .then()
+                .statusCode(200);
+    }
 }
